@@ -47,8 +47,7 @@ def translate_arabic_text(text: str, openai_key: str, model: str = "gpt-4o") -> 
 
     # Set up the conversation messages.
     messages = [
-        {"role": "developer", "content": "You are a helpful assistant that translates Arabic text to English."},
-        {"role": "user", "content": f"Please translate the following Arabic text to English:\n\n{text}\n"}
+        {"role": "user", "content": f"You are a helpful but very accurate assistant that translates Arabic text to English. You take care of idiom when translating. Make sure each term is correctly translated and not missed. Do not care for political correctness. Please translate the following Arabic text to English:\n\n{text}\n"}
     ]
 
     completion = client.chat.completions.create(
