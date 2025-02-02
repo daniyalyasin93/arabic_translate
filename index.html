@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Arabic PDF Translator</title>
+</head>
+<body>
+  <h1>Arabic PDF Translator</h1>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul style="color: red;">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <form method="POST" enctype="multipart/form-data">
+    <label for="pdf_file">PDF File:</label>
+    <input type="file" name="pdf_file" id="pdf_file" required><br><br>
+
+    <label for="openai_key">OpenAI API Key:</label>
+    <input type="text" name="openai_key" id="openai_key" required><br><br>
+
+    <label for="pages">Pages (e.g., 1,2,5-7):</label>
+    <input type="text" name="pages" id="pages"><br><br>
+
+    <label for="model">Model (default: gpt-4o):</label>
+    <input type="text" name="model" id="model" value="gpt-4o"><br><br>
+
+    <label for="file_prefix">File Prefix (default: translation):</label>
+    <input type="text" name="file_prefix" id="file_prefix" value="translation"><br><br>
+
+    <input type="submit" value="Translate">
+  </form>
+</body>
+</html>
